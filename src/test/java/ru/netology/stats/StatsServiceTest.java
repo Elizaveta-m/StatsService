@@ -32,7 +32,7 @@ class StatsServiceTest {
 
         StatsService service = new StatsService();
 
-        long expected = 11;
+        long expected = 8;
         long actual = service.findMaxSalesMonth(monthSales);
         assertEquals(expected, actual);
     }
@@ -42,7 +42,7 @@ class StatsServiceTest {
 
         StatsService service = new StatsService();
 
-        long expected = 1;
+        long expected = 9;
         long actual = service.findMinSalesMonth(monthSales);
         assertEquals(expected, actual);
     }

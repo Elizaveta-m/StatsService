@@ -1,57 +1,48 @@
 package ru.netology.stats;
 
 public class StatsService {
-    //    monthSales.length;
-    long[] monthSales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
     public long calculateSum(long[] monthSales) {
-        StatsService service = new StatsService();
-        long sum = 0; // начинаем с нуля
+        long sum = 0;
         for (long monthSale : monthSales) {
-            // аналог sum = sum + purchase;
-            // каждый раз прибавляем к текущей сумме новый элемент
             sum += monthSale;
         }
         return sum;
     }
 
     public long calculateAverage(long[] monthSales) {
-        StatsService service = new StatsService();
-        long sum = 0;
-        for (long monthSale : monthSales) {
-            sum += monthSale;
-        }
-        return sum / monthSales.length;
+        return calculateSum(monthSales) / monthSales.length;
     }
 
     public int findMaxSalesMonth(long[] monthSales) {
-        StatsService service = new StatsService();
-        long currentMax = monthSales[0]; // берём за точку отсчёта первый
+        long currentMax = monthSales[0];
         int month = 0;
+        int i;
 
-//             перебираем по одному
-        for (long monthSale : monthSales)
-            if (currentMax <= monthSale) {
-                month++;
+        for (i = 0; i < monthSales.length; i++) {
+            if (currentMax <= monthSales[i]) {
+                currentMax = monthSales[i];
+                month = i + 1;
             }
-        int maxSalesMonth = month;
-        return maxSalesMonth; //             возвращаем итоговый
+        }
+        return month;
     }
 
     public int findMinSalesMonth(long[] monthSales) {
-        StatsService service = new StatsService();
         long currentMin = monthSales[0];
         int month = 0;
-        for (long monthSale : monthSales)
-            if (currentMin > monthSale) {
-                month++;
+        int i;
+
+        for (i = 0; i < monthSales.length; i++) {
+            if (currentMin >= monthSales[i]) {
+                currentMin = monthSales[i];
+                month = i + 1;
             }
-        int minSalesMonth = month;
-        return minSalesMonth; //             возвращаем итоговый
+        }
+        return month;
     }
 
-
-    public static int findMonthUnderAverage(long[] monthSales) {
+    public int findMonthUnderAverage(long[] monthSales) {
         StatsService service = new StatsService();
         long average = service.calculateAverage(monthSales);
         int month = 0;
@@ -65,7 +56,7 @@ public class StatsService {
         return quantityUnder;
     }
 
-    public static int findMonthOverAverage(long[] monthSales) {
+    public int findMonthOverAverage(long[] monthSales) {
         StatsService service = new StatsService();
         long average = service.calculateAverage(monthSales);
         int month = 0;
