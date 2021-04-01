@@ -43,8 +43,7 @@ public class StatsService {
     }
 
     public int findMonthUnderAverage(long[] monthSales) {
-        StatsService service = new StatsService();
-        long average = service.calculateAverage(monthSales);
+        long average = calculateAverage(monthSales);
         int month = 0;
         int quantityUnder = 0;
         for (long monthSale : monthSales) {
@@ -57,8 +56,7 @@ public class StatsService {
     }
 
     public int findMonthOverAverage(long[] monthSales) {
-        StatsService service = new StatsService();
-        long average = service.calculateAverage(monthSales);
+        long average = calculateAverage(monthSales);
         int month = 0;
         int quantityOver = 0;
         for (long monthSale : monthSales) {
